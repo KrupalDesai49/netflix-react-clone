@@ -4,7 +4,7 @@ import { UserAuth } from "../context/AuthContext";
 import { db } from "../firebase";
 import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 
-const Movie = ({ item, size}) => {
+const Movie = ({ item, size }) => {
   const [like, setLike] = useState(false);
   const [saved, setSaved] = useState(false);
   const { user } = UserAuth();
@@ -19,7 +19,7 @@ const Movie = ({ item, size}) => {
         savedShows: arrayUnion({
           id: item.id,
           title: item.title,
-          img: item.backdrop_path,
+          img: item.poster_path,
         }),
       });
     } else {
@@ -36,9 +36,11 @@ const Movie = ({ item, size}) => {
   };
   return (
     <>
-      <div className="group hover:scale-105  duration-200 ease-in relative inline-block w-[190px] cursor-pointer p-2 md:p-3 sm:w-[220px] md:w-[230px] lg:w-[250px]">
+      <div className="group relative  inline-block w-[190px] cursor-pointer p-2 duration-200 ease-in hover:scale-105 sm:w-[220px] md:w-[230px] md:p-3 lg:w-[250px]">
         <img
-          src={`https://image.tmdb.org/t/p/w780/${size==='1'?item?.backdrop_path:item?.poster_path}`}
+          src={`https://image.tmdb.org/t/p/w780/${
+            size === "1" ? item?.backdrop_path : item?.poster_path
+          }`}
           alt={item?.title}
           className="rounded"
         />
@@ -52,9 +54,9 @@ const Movie = ({ item, size}) => {
           </p>
           <p onClick={saveShow}>
             {like ? (
-              <FaHeart className="absolute left-4 top-4 md:top-7 md:left-6 text-gray-300" />
+              <FaHeart className="absolute left-4 top-4 text-gray-300 md:left-6 md:top-7" />
             ) : (
-              <FaRegHeart className="absolute left-4 top-4  md:top-7 md:left-6 text-gray-300" />
+              <FaRegHeart className="absolute left-4 top-4  text-gray-300 md:left-6 md:top-7" />
             )}
           </p>
         </div>
