@@ -66,7 +66,7 @@ const SavedShow = () => {
           {movies.map((item, id) => (
             <div
               key={id}
-              className="group hover:scale-105 relative inline-block w-[190px] cursor-pointer p-2 sm:w-[220px] md:w-[230px] md:p-3 lg:w-[250px]"
+              className="group hover:scale-105  duration-200 ease-in relative inline-block w-[190px] cursor-pointer p-2 sm:w-[220px] md:w-[230px] md:p-3 lg:w-[250px]"
             >
               <img
                 src={`https://image.tmdb.org/t/p/w780/${item?.img}`}
